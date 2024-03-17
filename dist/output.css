@@ -544,8 +544,8 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.block {
-  display: block;
+.m-4 {
+  margin: 1rem;
 }
 
 .flex {
@@ -554,10 +554,6 @@ video {
 
 .grid {
   display: grid;
-}
-
-.h-\[300px\] {
-  height: 300px;
 }
 
 .h-full {
@@ -572,20 +568,40 @@ video {
   max-height: 100vh;
 }
 
-.w-\[300px\] {
-  width: 300px;
+.w-12 {
+  width: 3rem;
 }
 
 .w-full {
   width: 100%;
 }
 
-.grid-cols-8 {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+.grid-flow-dense {
+  grid-auto-flow: dense;
 }
 
-.grid-rows-4 {
-  grid-template-rows: repeat(4, minmax(0, 1fr));
+.grid-flow-col-dense {
+  grid-auto-flow: column dense;
+}
+
+.grid-cols-7 {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.grid-rows-5 {
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-12 {
+  gap: 3rem;
 }
 
 .bg-blue-900 {
@@ -606,4 +622,10 @@ video {
 .bg-yellow-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(113 63 18 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 640px) {
+  .sm\:w-16 {
+    width: 4rem;
+  }
 }
