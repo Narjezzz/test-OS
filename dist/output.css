@@ -544,6 +544,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .m-4 {
   margin: 1rem;
 }
@@ -582,6 +586,10 @@ video {
 
 .grid-flow-col-dense {
   grid-auto-flow: column dense;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .bg-black {

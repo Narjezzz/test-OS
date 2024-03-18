@@ -14,11 +14,21 @@
             backdrop-filter: blur(5px);
             background-color: rgba(26, 26, 26, 0.7)
         }
+        #my-video{
+            background-color: inherit;
+            height: 100%;
+            left: 0px;
+            object-fit: cover;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            z-index: -1;
+        }
     </style>
     <link rel="stylesheet" href="output.css">
 </head>
 <body>
-    <div class="wrapper h-screen bg-slate-800">
+    <div class="wrapper h-screen">
         <menu class="grid grid-flow-col" style="place-items: center">
             <a draggable="false" href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
@@ -38,6 +48,13 @@
             <div class="taskbar-content"></div>
             <div class="taskbar-right"></div>
         </section>
+        <video id="my-video" src="../videos/night-sky.mp4" width="640" height="360" autoplay loop muted playsinline></video>    
     </div>
 </body>
+    <script>
+        const myVideo = document.querySelector("#my-video")
+
+        myVideo.setAttribute('height', `${this.innerHeight}`);
+        myVideo.setAttribute('width', `${this.innerWidth}`);
+    </script>
 </html>
