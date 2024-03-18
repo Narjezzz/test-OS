@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OS</title>
+    <style>
+        menu {
+            height: calc(100% - 30px);
+            grid-template-columns: repeat(auto-fill, 74px);             grid-template-rows: repeat(auto-fill, 70px);
+            padding-bottom: 21px;
+        }
+        .taskbar{
+            backdrop-filter: blur(5px);
+            background-color: rgba(26, 26, 26, 0.7)
+        }
+    </style>
     <link rel="stylesheet" href="output.css">
 </head>
-<body class="h-screen">
-    <div class="wrapper max-h-screen max-w-auto">
-        <menu class="grid grid-flow-col-dense grid-cols-7 grid-rows-5 h-full w-full gap-10" style="place-items: center">
-            <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
+<body>
+    <div class="wrapper h-screen bg-slate-800">
+        <menu class="grid grid-flow-col" style="place-items: center">
+            <a draggable="false" href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
@@ -22,7 +33,7 @@
             <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
         </menu>
-        <section class="taskbar flex">
+        <section class="taskbar flex h-[30px] w-full">
             <div class="taskbar-left"></div>
             <div class="taskbar-content"></div>
             <div class="taskbar-right"></div>
