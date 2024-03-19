@@ -29,6 +29,7 @@
 </head>
 <body>
     <div class="wrapper h-screen">
+        <span class="cursor" style="display: none;"></span>
         <menu class="grid grid-flow-col" style="place-items: center">
             <a draggable="false" href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
@@ -53,8 +54,37 @@
 </body>
     <script>
         const myVideo = document.querySelector("#my-video")
+        const wrapper = document.querySelector(".wrapper")
 
-        myVideo.setAttribute('height', `${this.innerHeight}`);
-        myVideo.setAttribute('width', `${this.innerWidth}`);
+        myVideo.setAttribute('height', this.innerHeight);
+        myVideo.setAttribute('width', this.innerWidth);
+
+        const para = document.createElement("span")
+        para.style.backgroundColor = "black"
+        para.style.zIndex = "1000"
+        para.style.position = "absolute"
+        para.style.top = "0"
+
+        wrapper.addEventListener("mousedown", startTracking);
+
+        function handleMouseMove(event) {
+            console.log('X: ' + event.clientX + ', Y: ' + event.clientY)
+            para.style.height = `${event.clientX}px`
+            para.style.width = `${event.clientY}px`
+        }
+
+        function startTracking(event) {
+            console.log("you've hold down mouse1");
+            wrapper.addEventListener("mousemove", handleMouseMove);
+            wrapper.addEventListener("mouseup", stopTracking);
+        }
+
+        function stopTracking(event) {
+            console.log("you've hold up mouse1");
+            wrapper.appendChild(para)
+            wrapper.removeEventListener("mousemove", handleMouseMove);
+            wrapper.removeEventListener("mouseup", stopTracking);
+        }
+
     </script>
 </html>
