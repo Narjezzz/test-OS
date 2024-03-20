@@ -31,7 +31,7 @@
     <div class="wrapper h-screen">
         <span class="cursor" style="display: none;"></span>
         <menu class="grid grid-flow-col" style="place-items: center">
-            <a draggable="false" href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
+            <!-- <a draggable="false" href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
@@ -42,7 +42,7 @@
             <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
             <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
+            <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a> -->
         </menu>
         <section class="taskbar flex h-[30px] w-full">
             <div class="taskbar-left"></div>
@@ -65,25 +65,87 @@
         para.style.position = "absolute"
         para.style.top = "0"
 
-        wrapper.addEventListener("mousedown", startTracking);
+        wrapper.addEventListener("mousedown", startTracking)
 
-        function handleMouseMove(event) {
-            console.log('X: ' + event.clientX + ', Y: ' + event.clientY)
-            para.style.height = `${event.clientX}px`
-            para.style.width = `${event.clientY}px`
+        let param = [0, 0, 0, 0]
+
+        function handleMouseMove(e) {
+            console.log('X: ' + e.clientX + ', Y: ' + e.clientY)
+            // para.style.left = `${e.clientX}px`
+            // para.style.top = `${e.clientY}px`
         }
 
-        function startTracking(event) {
-            console.log("you've hold down mouse1");
-            wrapper.addEventListener("mousemove", handleMouseMove);
-            wrapper.addEventListener("mouseup", stopTracking);
+        function startTracking(e) {
+            console.log("you've hold down mouse1")
+            const firstValueX = e.clientX
+            const firstValueY = e.clientY
+            para.style.left = `${firstValueX}px`
+            para.style.top = `${firstValueY}px`
+            param[0] = firstValueX
+            param[1] = firstValueY
+            wrapper.addEventListener("mousemove", handleMouseMove)
+            wrapper.addEventListener("mouseup", stopTracking)
         }
 
-        function stopTracking(event) {
-            console.log("you've hold up mouse1");
+        function stopTracking(e) {
+            console.log("you've hold up mouse1")
+            const lastValueX = e.clientX
+            const lastValueY = e.clientY
+            param[2] = lastValueX
+            param[3] = lastValueY
+            calcResult(param)
+            wrapper.removeEventListener("mousemove", handleMouseMove)
+            wrapper.removeEventListener("mouseup", stopTracking)
+        }
+
+        function calcResult(arr){
+            console.log(arr)
+            const vectorFirstX = arr[0]
+            const vectorFirstY = arr[1]
+            const vectorLastX = arr[2]
+            const vectorLastY = arr[3]
+            let diffX = vectorFirstX - vectorLastX
+            let diffY = vectorFirstY - vectorLastY
+
+            if (diffX < 0 && diffY < 0){
+                para.style.left = `${vectorFirstX}px`
+                para.style.top = `${vectorFirstY}px`
+                para.style.width = `${Math.abs(diffX)}px`
+                para.style.height = `${Math.abs(diffY)}px`
+            }
+            else if(diffX > 0 && diffY > 0){
+                para.style.left = `${vectorLastX}px`
+                para.style.top = `${vectorLastY}px`
+                para.style.width = `${diffX}px`
+                para.style.height = `${diffY}px`
+            }
+            else if(diffX > 0 && diffY < 0){  
+                para.style.left = `${vectorLastX}px`
+                para.style.top = `${vectorFirstY}px`
+                para.style.width = `${diffX}px`
+                para.style.height = `${Math.abs(diffY)}px`
+            }
+            else if(diffX < 0 && diffY > 0){  
+                para.style.left = `${vectorFirstX}px`
+                para.style.top = `${vectorLastY}px`
+                para.style.width = `${Math.abs(diffX)}px`
+                para.style.height = `${diffY}px`
+            }
+            else{
+                console.log("error")
+            }
+
             wrapper.appendChild(para)
-            wrapper.removeEventListener("mousemove", handleMouseMove);
-            wrapper.removeEventListener("mouseup", stopTracking);
+
+            setTimeout(()=>{
+                para.style.top = `0px`
+                para.style.left = `0px`
+                para.style.height = `0px`
+                para.style.width = `0px`
+                // setTimeout(()=>{
+                //     wrapper.removeChild(para)
+                // }, 1000)
+            }, 100)
         }
 
     </script>
