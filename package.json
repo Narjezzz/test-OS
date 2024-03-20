@@ -1,8 +1,13 @@
 {
-  "scripts":{
-    "dev":"tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.12"
   }
 }
