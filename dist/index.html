@@ -1,152 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OS</title>
     <style>
-        menu {
-            height: calc(100% - 30px);
-            grid-template-columns: repeat(auto-fill, 74px);             grid-template-rows: repeat(auto-fill, 70px);
-            padding-bottom: 21px;
-        }
-        .taskbar{
-            backdrop-filter: blur(5px);
-            background-color: rgba(26, 26, 26, 0.7)
-        }
-        #my-video{
-            background-color: inherit;
-            height: 100%;
-            left: 0px;
-            object-fit: cover;
-            position: absolute;
-            top: 0px;
-            width: 100%;
-            z-index: -1;
-        }
+      menu {
+        height: calc(100% - 30px);
+        grid-template-columns: repeat(auto-fill, 74px);
+        grid-template-rows: repeat(auto-fill, 70px);
+        padding-bottom: 21px;
+      }
+      .taskbar {
+        backdrop-filter: blur(5px);
+        background-color: rgba(26, 26, 26, 0.7);
+      }
+      #my-video {
+        background-color: inherit;
+        height: 100%;
+        left: 0px;
+        object-fit: cover;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        z-index: -1;
+      }
     </style>
-    <link rel="stylesheet" href="output.css">
-</head>
-<body>
-    <div class="wrapper h-screen ">
-        <span class="cursor" style="display: none;"></span>
-        <menu class="grid grid-flow-col" style="place-items: center">
-            <!-- <a draggable="false" href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4 "><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a>
-            <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"><img src="../pics/icons/play-icon.svg" alt=""></a> -->
-        </menu>
-        <section class="taskbar flex h-[30px] w-full">
-            <div class="taskbar-left"></div>
-            <div class="taskbar-content"></div>
-            <div class="taskbar-right"></div>
-        </section>
-        <video id="my-video" src="../videos/night-sky.mp4" width="640" height="360" autoplay loop muted playsinline></video>    
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body>
+    <div class="wrapper h-screen">
+      <span class="cursor" style="display: none"></span>
+      <menu class="grid grid-flow-col" style="place-items: center">
+        <!-- <a
+          draggable="false"
+          href="#"
+          class="icons flex bg-green-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a>
+        <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"
+          ><img src="../pics/icons/play-icon.svg" alt=""
+        /></a> -->
+      </menu>
+      <section class="taskbar flex h-[30px] w-full">
+        <div class="taskbar-left"></div>
+        <div class="taskbar-content"></div>
+        <div class="taskbar-right"></div>
+      </section>
+      <video
+        id="my-video"
+        src="../videos/night-sky.mp4"
+        width="640"
+        height="360"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
     </div>
-</body>
-    <script>
-        const myVideo = document.querySelector("#my-video")
-        const wrapper = document.querySelector(".wrapper")
+  </body>
+  <script>
+    const myVideo = document.querySelector("#my-video");
+    const wrapper = document.querySelector(".wrapper");
 
-        myVideo.setAttribute('height', this.innerHeight);
-        myVideo.setAttribute('width', this.innerWidth);
+    myVideo.setAttribute("height", this.innerHeight);
+    myVideo.setAttribute("width", this.innerWidth);
 
-        const para = document.createElement("span")
-        para.style.backgroundColor = "black"
-        para.style.zIndex = "1000"
-        para.style.position = "absolute"
-        para.style.top = "0"
+    const para = document.createElement("span");
+    para.style.backgroundColor = "black";
+    para.style.zIndex = "1000";
+    para.style.position = "absolute";
+    para.style.top = "0";
 
-        wrapper.addEventListener("mousedown", startTracking)
+    wrapper.addEventListener("mousedown", startTracking);
 
-        let param = [0, 0, 0, 0]
+    let param = [0, 0, 0, 0];
 
-        function handleMouseMove(e) {
-            console.log('X: ' + e.clientX + ', Y: ' + e.clientY)
-            // para.style.left = `${e.clientX}px`
-            // para.style.top = `${e.clientY}px`
-        }
+    function handleMouseMove(e) {
+      console.log("X: " + e.clientX + ", Y: " + e.clientY);
+      // para.style.left = `${e.clientX}px`
+      // para.style.top = `${e.clientY}px`
+    }
 
-        function startTracking(e) {
-            console.log("you've hold down mouse1")
-            const firstValueX = e.clientX
-            const firstValueY = e.clientY
-            para.style.left = `${firstValueX}px`
-            para.style.top = `${firstValueY}px`
-            param[0] = firstValueX
-            param[1] = firstValueY
-            wrapper.addEventListener("mousemove", handleMouseMove)
-            wrapper.addEventListener("mouseup", stopTracking)
-        }
+    function startTracking(e) {
+      console.log("you've hold down mouse1");
+      const firstValueX = e.clientX;
+      const firstValueY = e.clientY;
+      para.style.left = `${firstValueX}px`;
+      para.style.top = `${firstValueY}px`;
+      param[0] = firstValueX;
+      param[1] = firstValueY;
+      wrapper.addEventListener("mousemove", handleMouseMove);
+      wrapper.addEventListener("mouseup", stopTracking);
+    }
 
-        function stopTracking(e) {
-            console.log("you've hold up mouse1")
-            const lastValueX = e.clientX
-            const lastValueY = e.clientY
-            param[2] = lastValueX
-            param[3] = lastValueY
-            calcResult(param)
-            wrapper.removeEventListener("mousemove", handleMouseMove)
-            wrapper.removeEventListener("mouseup", stopTracking)
-        }
+    function stopTracking(e) {
+      console.log("you've hold up mouse1");
+      const lastValueX = e.clientX;
+      const lastValueY = e.clientY;
+      param[2] = lastValueX;
+      param[3] = lastValueY;
+      calcResult(param);
+      wrapper.removeEventListener("mousemove", handleMouseMove);
+      wrapper.removeEventListener("mouseup", stopTracking);
+    }
 
-        function calcResult(arr){
-            console.log(arr)
-            const vectorFirstX = arr[0]
-            const vectorFirstY = arr[1]
-            const vectorLastX = arr[2]
-            const vectorLastY = arr[3]
-            let diffX = vectorFirstX - vectorLastX
-            let diffY = vectorFirstY - vectorLastY
+    function calcResult(arr) {
+      console.log(arr);
+      const vectorFirstX = arr[0];
+      const vectorFirstY = arr[1];
+      const vectorLastX = arr[2];
+      const vectorLastY = arr[3];
+      let diffX = vectorFirstX - vectorLastX;
+      let diffY = vectorFirstY - vectorLastY;
 
-            if (diffX < 0 && diffY < 0){
-                para.style.left = `${vectorFirstX}px`
-                para.style.top = `${vectorFirstY}px`
-                para.style.width = `${Math.abs(diffX)}px`
-                para.style.height = `${Math.abs(diffY)}px`
-            }
-            else if(diffX > 0 && diffY > 0){
-                para.style.left = `${vectorLastX}px`
-                para.style.top = `${vectorLastY}px`
-                para.style.width = `${diffX}px`
-                para.style.height = `${diffY}px`
-            }
-            else if(diffX > 0 && diffY < 0){  
-                para.style.left = `${vectorLastX}px`
-                para.style.top = `${vectorFirstY}px`
-                para.style.width = `${diffX}px`
-                para.style.height = `${Math.abs(diffY)}px`
-            }
-            else if(diffX < 0 && diffY > 0){  
-                para.style.left = `${vectorFirstX}px`
-                para.style.top = `${vectorLastY}px`
-                para.style.width = `${Math.abs(diffX)}px`
-                para.style.height = `${diffY}px`
-            }
-            else{
-                console.log("error")
-            }
+      if (diffX < 0 && diffY < 0) {
+        para.style.left = `${vectorFirstX}px`;
+        para.style.top = `${vectorFirstY}px`;
+        para.style.width = `${Math.abs(diffX)}px`;
+        para.style.height = `${Math.abs(diffY)}px`;
+      } else if (diffX > 0 && diffY > 0) {
+        para.style.left = `${vectorLastX}px`;
+        para.style.top = `${vectorLastY}px`;
+        para.style.width = `${diffX}px`;
+        para.style.height = `${diffY}px`;
+      } else if (diffX > 0 && diffY < 0) {
+        para.style.left = `${vectorLastX}px`;
+        para.style.top = `${vectorFirstY}px`;
+        para.style.width = `${diffX}px`;
+        para.style.height = `${Math.abs(diffY)}px`;
+      } else if (diffX < 0 && diffY > 0) {
+        para.style.left = `${vectorFirstX}px`;
+        para.style.top = `${vectorLastY}px`;
+        para.style.width = `${Math.abs(diffX)}px`;
+        para.style.height = `${diffY}px`;
+      } else {
+        console.log("error");
+      }
 
-            wrapper.appendChild(para)
+      wrapper.appendChild(para);
 
-            setTimeout(()=>{
-                para.style.top = `0px`
-                para.style.left = `0px`
-                para.style.height = `0px`
-                para.style.width = `0px`
-                // setTimeout(()=>{
-                //     wrapper.removeChild(para)
-                // }, 1000)
-            }, 100)
-        }
-
-    </script>
+      setTimeout(() => {
+        para.style.top = `0px`;
+        para.style.left = `0px`;
+        para.style.height = `0px`;
+        para.style.width = `0px`;
+        // setTimeout(()=>{
+        //     wrapper.removeChild(para)
+        // }, 1000)
+      }, 100);
+    }
+  </script>
 </html>
