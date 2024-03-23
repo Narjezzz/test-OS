@@ -4,72 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OS</title>
-    <style>
-      menu {
-        height: calc(100% - 30px);
-        grid-template-columns: repeat(auto-fill, 74px);
-        grid-template-rows: repeat(auto-fill, 70px);
-        padding-bottom: 21px;
-      }
-      .taskbar {
-        backdrop-filter: blur(5px);
-        background-color: rgba(26, 26, 26, 0.7);
-      }
-      #my-video {
-        background-color: inherit;
-        height: 100%;
-        left: 0px;
-        object-fit: cover;
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        z-index: -1;
-      }
-    </style>
     <link rel="stylesheet" href="output.css" />
+    <style>
+    .focus {
+      background-color: green;
+      color: white;
+      backdrop-filter: blur(4px);
+    }
+    </style>
   </head>
   <body>
     <div class="wrapper h-screen">
-      <menu class="grid grid-flow-col" style="place-items: center">
-        <!-- <a
-          draggable="false"
-          href="#"
-          class="icons flex bg-green-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-green-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-blue-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-yellow-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a>
-        <a href="#" class="icons flex bg-red-900 w-12 sm:w-16 m-4"
-          ><img src="../pics/icons/play-icon.svg" alt=""
-        /></a> -->
+      <menu class="grid" style="place-items: center">
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="../pics/icons/play-icon.svg" alt=""></a>
+        </div>
       </menu>
       <section class="taskbar flex h-[30px] w-full">
         <div class="taskbar-left"></div>
