@@ -30,11 +30,11 @@
     height: 100%;
     width: 100%;
   }
-  .focus {
+  /* .focus {
     background-color: green;
     color: white;
-    backdrop-filter: blur(4px);
-  }
+    backdrop-filter: blur(8px);
+  } */
   .icons {
     @apply flex bg-purple-400 hover:bg-hover-icon w-12 p-[2px] select-none transition-all;
   }

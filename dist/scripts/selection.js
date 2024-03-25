@@ -1,17 +1,14 @@
 const menu = document.querySelector("menu");
-const icons = document.querySelectorAll(".icons");
-// const iconTest = document.querySelector(".test");
+const nodeListOfIcons = document.querySelectorAll(".icons");
 
 const selectionArea = document.createElement("span");
 
-const positionFirst = { X: 0,Y: 0, };
-const positionLast ={ X: 0, Y: 0, }
+const positionFirst = { X: 0, Y: 0 };
+const positionLast = { X: 0, Y: 0 };
 
-const objTest = {}
+const listOfIcons = [];
 
-const arrayElements = []
-
-const arrayTest = []
+const selectedIcons = new Set();
 
 menu.addEventListener("mousedown", startTracking);
 
@@ -26,26 +23,6 @@ function resetSelectionArea() {
   selectionArea.style.width = "0px";
 }
 
-function qwerty(){
-  const selectionAreaRect = selectionArea.getBoundingClientRect();
-  // const iconRect = iconTest.getBoundingClientRect();
-
-  for (let index = 0; index < Object.keys(objTest).length; index++) {
-    
-    const iconRectArray = Object.values(objTest)
-    const iconRect = iconRectArray[index]
-    // console.log(iconRect[index], "iconRect")
-    // console.log(index)
-    if (selectionAreaRect.left < iconRect.right && selectionAreaRect.right > iconRect.left && selectionAreaRect.top < iconRect.bottom && selectionAreaRect.bottom > iconRect.top) {
-      // iconTest.classList.add('focus');
-      // arrayElements[index].classList.add("focus")
-      arrayElements[index].classList.add("focus")
-      // console.log("11231231321321321321313213")
-      // menu.removeEventListener('pointermove', qwerty);
-    }
-  }
-}
-
 function handleMouseMove(e) {
   // mb add selectionArea.addEventListener("somekey", cb)
   // mb add window target (dunno how but that is idea) || Window.screen || Window.getSelection()
@@ -55,6 +32,37 @@ function handleMouseMove(e) {
   selectionArea.style.top = `${Math.min(positionFirst.Y, positionLast.Y)}px`;
   selectionArea.style.height = `${Math.abs(positionFirst.Y - positionLast.Y)}px`;
   selectionArea.style.width = `${Math.abs(positionFirst.X - positionLast.X)}px`;
+
+  const selectionAreaRect = selectionArea.getBoundingClientRect();
+
+  listOfIcons.forEach((currentIcon) => {
+    const iconRect = currentIcon.getBoundingClientRect();
+
+    if (
+      selectionAreaRect.left < iconRect.right &&
+      selectionAreaRect.right > iconRect.left &&
+      selectionAreaRect.top < iconRect.bottom &&
+      selectionAreaRect.bottom > iconRect.top
+    ){
+      selectedIcons.add(currentIcon);
+      currentIcon.classList.add("focus");
+    } 
+    else {
+      selectedIcons.forEach((currentIcon) => {
+        const iconRect = currentIcon.getBoundingClientRect();
+        if (
+          !(
+            selectionAreaRect.left < iconRect.right &&
+            selectionAreaRect.right > iconRect.left &&
+            selectionAreaRect.top < iconRect.bottom &&
+            selectionAreaRect.bottom > iconRect.top
+          )
+        ){
+          currentIcon.classList.remove("focus");
+        }
+      });
+    }
+  });
 }
 
 function handleMouseLeave() {
@@ -67,18 +75,11 @@ function startTracking(e) {
   positionFirst.Y = e.clientY;
   resetSelectionArea();
   menu.appendChild(selectionArea);
-  icons.forEach( icon => {
-    arrayTest.push(icon.getBoundingClientRect())
-    arrayElements.push(icon)
-    icon.classList.remove("focus")
-  })
-  for (let index = 0; index < arrayTest.length; index++) {
-    objTest[`icon ${index}`] = arrayTest[index]
-    // console.log(objTest, "objtest in for")
+  for (let index = 0; index < nodeListOfIcons.length; index++) {
+    const currentIcon = nodeListOfIcons[index];
+    listOfIcons[index] = currentIcon;
+    currentIcon.classList.remove("focus");
   }
-  // console.log(objTest, "objTest")
-  // console.log(Object.keys(objTest).length, "objTest elngth")
-  menu.addEventListener('pointermove', qwerty);
   menu.addEventListener("mousemove", handleMouseMove);
   menu.addEventListener("mouseleave", handleMouseLeave);
   menu.addEventListener("mouseup", stopTracking);
@@ -89,8 +90,4 @@ function stopTracking() {
   menu.removeEventListener("mousemove", handleMouseMove);
   menu.removeEventListener("mouseup", stopTracking);
   menu.removeEventListener("mouseleave", handleMouseLeave);
-  menu.removeEventListener('pointermove', qwerty);
-  arrayTest.length = 0
-  arrayElements.length = 0
-  // console.log(objTest, "objTest empty")
 }
