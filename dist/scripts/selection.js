@@ -6,8 +6,6 @@ const selectionArea = document.createElement("span");
 const positionFirst = { X: 0, Y: 0 };
 const positionLast = { X: 0, Y: 0 };
 
-const listOfIcons = [];
-
 const selectedIcons = new Set();
 
 menu.addEventListener("mousedown", startTracking);
@@ -35,7 +33,7 @@ function handleMouseMove(e) {
 
   const selectionAreaRect = selectionArea.getBoundingClientRect();
 
-  listOfIcons.forEach((currentIcon) => {
+  nodeListOfIcons.forEach((currentIcon) => {
     const iconRect = currentIcon.getBoundingClientRect();
 
     if (
@@ -43,11 +41,10 @@ function handleMouseMove(e) {
       selectionAreaRect.right > iconRect.left &&
       selectionAreaRect.top < iconRect.bottom &&
       selectionAreaRect.bottom > iconRect.top
-    ){
+    ) {
       selectedIcons.add(currentIcon);
       currentIcon.classList.add("focus");
-    } 
-    else {
+    } else {
       selectedIcons.forEach((currentIcon) => {
         const iconRect = currentIcon.getBoundingClientRect();
         if (
@@ -57,7 +54,7 @@ function handleMouseMove(e) {
             selectionAreaRect.top < iconRect.bottom &&
             selectionAreaRect.bottom > iconRect.top
           )
-        ){
+        ) {
           currentIcon.classList.remove("focus");
         }
       });
@@ -66,6 +63,9 @@ function handleMouseMove(e) {
 }
 
 function handleMouseLeave() {
+  listOfIcons.forEach((currentIcon) => {
+    currentIcon.classList.remove("focus");
+  });
   resetSelectionArea();
   stopTracking();
 }
@@ -75,11 +75,9 @@ function startTracking(e) {
   positionFirst.Y = e.clientY;
   resetSelectionArea();
   menu.appendChild(selectionArea);
-  for (let index = 0; index < nodeListOfIcons.length; index++) {
-    const currentIcon = nodeListOfIcons[index];
-    listOfIcons[index] = currentIcon;
+  nodeListOfIcons.forEach((currentIcon) => {
     currentIcon.classList.remove("focus");
-  }
+  });
   menu.addEventListener("mousemove", handleMouseMove);
   menu.addEventListener("mouseleave", handleMouseLeave);
   menu.addEventListener("mouseup", stopTracking);
