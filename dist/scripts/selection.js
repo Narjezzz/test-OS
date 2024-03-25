@@ -63,7 +63,7 @@ function handleMouseMove(e) {
 }
 
 function handleMouseLeave() {
-  listOfIcons.forEach((currentIcon) => {
+  nodeListOfIcons.forEach((currentIcon) => {
     currentIcon.classList.remove("focus");
   });
   resetSelectionArea();
