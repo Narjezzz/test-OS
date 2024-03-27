@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="app/css/output/output.css" />
+    <title>pet-os</title>
+    <style>
+      .focus {
+        background-color: rgb(88, 175, 88);
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="app"></div> -->
+    <div class="wrapper h-screen">
+      <menu class="grid" style="place-items: center">
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+        <div class="icons">
+          <a href="#"><img src="app/pics/icons/play-icon.svg" alt="" /></a>
+        </div>
+      </menu>
+      <section class="taskbar flex h-[30px] w-full">
+        <div class="taskbar-left"></div>
+        <div class="taskbar-content"></div>
+        <div class="taskbar-right"></div>
+      </section>
+      <video
+        id="my-video"
+        src="app/video/night-sky.mp4"
+        width="640"
+        height="360"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
+    </div>
+    <script type="module" src="app/scripts/main.js"></script>
+  </body>
+</html>
