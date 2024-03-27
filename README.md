@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # PET-OS
 
 ## Tailwind + Prettier
