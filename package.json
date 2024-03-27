@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "tailwind": "tailwindcss -i ./app/css/input/input.css -o ./app/css/output/output.css --watch",
+    "tailwind": "tailwindcss -i ./components/css/input/input.css -o ./components/css/output/output.css --watch",
     "lintcode": "prettier --write .",
     "dev": "vite",
     "build": "vite build",
