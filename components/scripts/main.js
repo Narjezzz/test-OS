@@ -22,7 +22,12 @@
 // `;
 
 // setupCounter(document.querySelector("#counter"));
-
+import ConfigureElement from "./helper/classConfigureElement.js";
+import {
+  resetSelectionAreaTemplate,
+  resetContextMenuTemplate,
+  modifiedContextMenuTemplate,
+} from "./helper/configuredTemplates.js";
 import "./selection.js";
 import "./videosetter.js";
 
