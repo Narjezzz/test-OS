@@ -17,7 +17,7 @@
     width: 100%;
     z-index: -1;
   }
-  menu {
+  main {
     height: calc(100% - 30px);
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, 74px);

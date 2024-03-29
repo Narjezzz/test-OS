@@ -1,24 +1,55 @@
-const menu = document.querySelector("menu");
-const nodeListOfIcons = document.querySelectorAll(".icons");
+import ConfigureElement from "./helper/classConfigureElement.js";
+import {
+  resetSelectionAreaTemplate,
+  resetContextMenuTemplate,
+  modifiedContextMenuTemplate,
+} from "./helper/configuredTemplates.js";
 
-const selectionArea = document.createElement("span");
+const desktop = document.querySelector("main"),
+  nodeListOfIcons = document.querySelectorAll(".icons"),
+  selectionArea = document.createElement("span"),
+  contextMenu = document.createElement("span"),
+  positionFirst = { X: 0, Y: 0 },
+  positionLast = { X: 0, Y: 0 },
+  selectedIcons = new Set();
 
-const positionFirst = { X: 0, Y: 0 };
-const positionLast = { X: 0, Y: 0 };
+window.addEventListener("contextmenu", (e) => e.preventDefault());
+desktop.addEventListener("contextmenu", handleContextMenu);
+desktop.addEventListener("mousedown", startTracking);
 
-const selectedIcons = new Set();
+function startTracking(e) {
+  positionFirst.X = e.clientX;
+  positionFirst.Y = e.clientY;
 
-menu.addEventListener("mousedown", startTracking);
+  resetSelectionAreaTemplate.convertTo(selectionArea);
+  resetContextMenuTemplate.convertTo(contextMenu);
 
-function resetSelectionArea() {
-  selectionArea.style.backgroundColor = "rgba(0,0,0,0.3)";
-  selectionArea.style.border = "1px solid black";
-  selectionArea.style.zIndex = "1000";
-  selectionArea.style.position = "absolute";
-  selectionArea.style.left = "0px";
-  selectionArea.style.top = "0px";
-  selectionArea.style.height = "0px";
-  selectionArea.style.width = "0px";
+  desktop.appendChild(selectionArea);
+  desktop.appendChild(contextMenu);
+  desktop.removeChild(contextMenu);
+
+  nodeListOfIcons.forEach((currentIcon) => {
+    currentIcon.classList.remove("focus");
+  });
+
+  desktop.addEventListener("mousemove", handleMouseMove);
+  desktop.addEventListener("mouseleave", handleMouseLeave);
+  desktop.addEventListener("mouseup", stopTracking);
+}
+
+function stopTracking() {
+  desktop.removeChild(selectionArea);
+  desktop.removeEventListener("mousemove", handleMouseMove);
+  desktop.removeEventListener("mouseup", stopTracking);
+  desktop.removeEventListener("mouseleave", handleMouseLeave);
+}
+
+function handleMouseLeave() {
+  nodeListOfIcons.forEach((currentIcon) => {
+    currentIcon.classList.remove("focus");
+  });
+  resetSelectionAreaTemplate.convertTo(selectionArea);
+  stopTracking();
 }
 
 function handleMouseMove(e) {
@@ -62,30 +93,11 @@ function handleMouseMove(e) {
   });
 }
 
-function handleMouseLeave() {
-  nodeListOfIcons.forEach((currentIcon) => {
-    currentIcon.classList.remove("focus");
-  });
-  resetSelectionArea();
+function handleContextMenu() {
+  modifiedContextMenuTemplate.add("left", `${positionFirst.X}px`);
+  modifiedContextMenuTemplate.add("top", `${positionFirst.Y}px`);
+  modifiedContextMenuTemplate.convertTo(contextMenu);
+  desktop.appendChild(contextMenu);
+  contextMenu.classList.add("contextMenu");
   stopTracking();
-}
-
-function startTracking(e) {
-  positionFirst.X = e.clientX;
-  positionFirst.Y = e.clientY;
-  resetSelectionArea();
-  menu.appendChild(selectionArea);
-  nodeListOfIcons.forEach((currentIcon) => {
-    currentIcon.classList.remove("focus");
-  });
-  menu.addEventListener("mousemove", handleMouseMove);
-  menu.addEventListener("mouseleave", handleMouseLeave);
-  menu.addEventListener("mouseup", stopTracking);
-}
-
-function stopTracking() {
-  menu.removeChild(selectionArea);
-  menu.removeEventListener("mousemove", handleMouseMove);
-  menu.removeEventListener("mouseup", stopTracking);
-  menu.removeEventListener("mouseleave", handleMouseLeave);
 }
