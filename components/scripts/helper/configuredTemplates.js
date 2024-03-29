@@ -1,4 +1,4 @@
-import ConfigureElement from "./classConfigureElement";
+import ConfigureElement from "./classConfigureElement.js";
 
 export const resetSelectionAreaTemplate = new ConfigureElement(),
   resetContextMenuTemplate = new ConfigureElement(),
